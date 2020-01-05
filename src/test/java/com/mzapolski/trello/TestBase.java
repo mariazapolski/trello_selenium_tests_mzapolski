@@ -3,6 +3,9 @@ package com.mzapolski.trello;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -16,7 +19,18 @@ public class TestBase {
 
   @BeforeSuite
   public void setUp(){
+    String browser = BrowserType.CHROME;
+    if(browser.equals(BrowserType.CHROME){
     wd = new ChromeDriver();
+  } else
+    if(browser.equals(BrowserType.FIREFOX){
+    wd = new FirefoxDriver();
+    } else
+    if(browser.equals(BrowserType.SAFARI){
+    wd = new SafariDriver();
+}
+
+    //wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("https://trello.com/");
       }

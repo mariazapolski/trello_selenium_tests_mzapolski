@@ -1,6 +1,7 @@
 package com.mzapolski.trello;
 
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -51,3 +52,13 @@ returnToHomePage();
     click(By.cssSelector("[data-test-id='header-create-menu-button']"));
   }
 }
+
+  @AfterClass
+  public void postActions(){
+    int boardsCount = getBoardsCount();
+    while(boardsCount>4){
+      deleteBoard();
+      boardsCount = getBoardsCount();
+
+    }
+  }
