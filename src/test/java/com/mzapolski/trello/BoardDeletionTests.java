@@ -1,4 +1,4 @@
-package com.mzapolski.trello.;
+package com.mzapolski.trello;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class BoardDeletionTests extends TestBase {
 
     protected static WebDriver wd;
 
@@ -22,9 +22,11 @@ public class TestBase {
         String browser = BrowserType.CHROME;
         if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        } else if (browser.equals(BrowserType.FIREFOX)) {
+        } else
+            if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
-        } else if (browser.equals(BrowserType.EDGE)) {
+        } else
+            if (browser.equals(BrowserType.EDGE)) {
             wd = new EdgeDriver();
         }
 
@@ -57,10 +59,10 @@ public class TestBase {
         pause(3000);
         click(By.id("login"));
         //email
-        type(By.id("username"), "romich87@gmail.com");
+        type(By.id("username"), "tests.mzapolski@gmail.com");
         click(By.id("login-submit"));
         //password
-        type(By.id("password"), pwd);
+        type(By.id("QAtesting"), pwd);
         click(By.id("login-submit"));
         pause(20000);
     }
@@ -79,7 +81,7 @@ public class TestBase {
         click(By.id("login"));
     }
 
-    public void clickLoginLink() throws InterruptedException {
+    public void clickLoginLink()  {
         maximize();
         click(By.cssSelector("[href='/login']"));
     }
@@ -90,7 +92,7 @@ public class TestBase {
 
     public void login() throws InterruptedException {
         clickLoginLink();
-        fillLoginForm("romich87", "romanich1987");
+        fillLoginForm("mzapolski", "QAtesting");
         Assert.assertTrue(isAvatarPresentOnHeader());
     }
 

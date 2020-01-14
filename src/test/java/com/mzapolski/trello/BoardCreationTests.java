@@ -50,15 +50,15 @@ returnToHomePage();
 
   public void clickOnPlusButton() {
     click(By.cssSelector("[data-test-id='header-create-menu-button']"));
+
   }
-}
 
   @AfterClass
   public void postActions(){
     int boardsCount = getBoardsCount();
-    while(boardsCount>4){
-      deleteBoard();
-      boardsCount = getBoardsCount();
+   // while(boardsCount>4){
+      //deleteBoard();
+      //boardsCount = getBoardsCount();
 
     }
   }

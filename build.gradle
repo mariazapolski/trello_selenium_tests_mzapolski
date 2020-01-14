@@ -19,11 +19,11 @@ test{
     useTestNG()
     }
 
-    //task testRegression(type: Test){
-       // useTestNG{
-           // suites 'src/test/resources/testing.xml'
-       // }
-   // }
-//}
+    task testRegression(type: Test){
+        useTestNG{
+            suites 'src/test/resources/testing.xml'
+        }
+    }
+
 
 
