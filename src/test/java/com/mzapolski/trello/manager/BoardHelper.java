@@ -1,9 +1,8 @@
-package com.mzapolski.trello;
+package com.mzapolski.trello.manager;
 
+import com.mzapolski.trello.model.BoardData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static jdk.nashorn.internal.objects.NativeJava.type;
 
 public class BoardHelper  extends  HelperBase{
   public BoardHelper(WebDriver wd) {
@@ -19,8 +18,8 @@ public class BoardHelper  extends  HelperBase{
 
   }
 
-  public void fillBoardForm(String boardName) {
-    type(By.cssSelector("[data-test-id='create-board-title-input']"), boardName);
+  public void fillBoardForm(BoardData boardData) {
+    type(By.cssSelector("[data-test-id='create-board-title-input']"), boardData.getBoardName());
   }
 
   public void selectCreateBoardFromDropDown() {
@@ -31,7 +30,7 @@ public class BoardHelper  extends  HelperBase{
   public void createBoard() throws InterruptedException {
     clickOnPlusButton();
     selectCreateBoardFromDropDown();
-    fillBoardForm("qa22"+ System.currentTimeMillis());
+    fillBoardForm(new BoardData("qa22"+ System.currentTimeMillis()));
     confirmBoardCreation();
     pause(15000);
     returnToHomePage();

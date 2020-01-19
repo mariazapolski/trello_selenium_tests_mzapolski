@@ -1,4 +1,4 @@
-package com.mzapolski.trello;
+package com.mzapolski.trello.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
